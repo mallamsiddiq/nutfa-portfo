@@ -130,9 +130,13 @@ STATICFILES_DIRS = [
      os.path.join(BASE_DIR, 'frontend/build')
 ]
 
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS =config('CORS_ALLOWED_ORIGINS', cast=Csv())
+
+
+django_heroku.settings(locals())
