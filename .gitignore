@@ -4,3 +4,4 @@ frontend/public/
 frontend/src/
 package-lock.json
 nutfaenv/
+db.sqlite3
