@@ -28,7 +28,7 @@ class PostView(APIView):
     serializer_class = PostSerializer
     
     def get(self, request, format=None):
-        data = PostSerializer(Post.objects.filter(is_approved=True),many=True).data
+        data = PostSerializer(Post.objects.filter(is_approved=False),many=True).data
         return Response(data, status=status.HTTP_200_OK)
     def post(self, request, format=None): 
         serializer = self.serializer_class(data=self.request.data)
@@ -44,12 +44,12 @@ class Postdetail(APIView):
     serializer_class = PostSerializer
     def get_object(self, pk):
         try:
-            return Post.objects.get(pk=pk)
+            return Post.objects.filter(pk=pk)
         except Snippet.DoesNotExist:
             raise Http404
     def get(self, request, pk, format=None):
         snippet = self.get_object(pk)
-        serializer = self.serializer_class(snippet)
+        serializer = self.serializer_class(snippet,many=True)
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
