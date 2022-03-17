@@ -28,7 +28,7 @@ class PostView(APIView):
     serializer_class = PostSerializer
     
     def get(self, request, format=None):
-        data = PostSerializer(Post.objects.filter(is_approved=False),many=True).data
+        data = PostSerializer(Post.objects.filter(is_approved=True),many=True).data
         return Response(data, status=status.HTTP_200_OK)
     def post(self, request, format=None): 
         serializer = self.serializer_class(data=self.request.data)
