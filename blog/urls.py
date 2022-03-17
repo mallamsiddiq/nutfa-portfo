@@ -1,6 +1,8 @@
 from django.urls import path
 from .views import PostView, MessageView,Postdetail
 
+from django.views.generic import TemplateView
+
 urlpatterns = [
     
     #path('room', MachineView.as_view()),

@@ -58,7 +58,7 @@ class Postdetail(APIView):
             snippet.views += 1
             snippet.save()
         else:
-            snippet = self.get_object(pk)
+            snippet = self.get_object(pk)[0]
             serializer = self.serializer_class(snippet, data=request.data)
             if serializer.is_valid():
                 serializer.save()
