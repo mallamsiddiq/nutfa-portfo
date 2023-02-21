@@ -5,4 +5,5 @@ frontend/src/
 package-lock.json
 package.json
 nutfaenv/
+myenv/
 db.sqlite3
