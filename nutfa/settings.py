@@ -19,6 +19,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG=config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+ALLOWED_HOSTS = ['*']
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -87,9 +88,9 @@ DATABASES = {
     }
 }
 
-DATABASE_URL = os.environ.get('DATABASE_URL')
-db_from_env = dj_database_url.config(default=DATABASE_URL, conn_max_age=500, ssl_require=True)
-DATABASES['default'].update(db_from_env)
+# DATABASE_URL = os.environ.get('DATABASE_URL')
+# db_from_env = dj_database_url.config(default=DATABASE_URL, conn_max_age=500, ssl_require=True)
+# DATABASES['default'].update(db_from_env)
 
 
 # Password validation
@@ -132,11 +133,11 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "frontend/build/static"),
     os.path.join(BASE_DIR, "frontend/build"),
+    os.path.join(BASE_DIR, 'static')
 ]
 
-STATIC_ROOT = BASE_DIR/'staticfiles'
-# Default primary key field type
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static', 'staticfiles')
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
