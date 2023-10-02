@@ -1,5 +1,5 @@
 .env
-.env/
+.env.dev
 frontend/node_modules/
 frontend/public/
 frontend/src/
