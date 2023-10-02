@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  web:
+    build: .
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    container_name: nutfa
+    volumes:
+      - .:/nutfa
+    ports:
+      - 8000:8000
+    env_file:
+      - ./.env.dev
+
+
+  db:
+    image: postgres:16
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=hello_django
+      - POSTGRES_PASSWORD=hello_django_
+      - POSTGRES_DB=hello_django_dev
+
+volumes:
+  postgres_data:

@@ -7,3 +7,4 @@ package.json
 nutfaenv/
 myenv/
 db.sqlite3
+.vercel
