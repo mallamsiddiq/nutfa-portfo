@@ -17,6 +17,4 @@ ADD . /nutfa/
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-# CMD gunicorn seedtest.wsgi:application --bind 0.0.0.0:$PORT
-
-
+CMD gunicorn nutfa.wsgi:application --bind 0.0.0.0:$PORT
